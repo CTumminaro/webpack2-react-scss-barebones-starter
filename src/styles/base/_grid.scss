@@ -1,0 +1,28 @@
+$total_columns: 12;
+$gutter: 2;
+
+@mixin grid {
+  *zoom: 1;
+	&:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+@mixin column($col) {
+
+  width: ($col / $total_columns * 100) - $gutter  + %;
+  float: left;
+  margin-left: $gutter + %;
+}
+
+
+
+//Simple column for even columns and quick gutter change
+@mixin simple-column($col, $gutter) {
+  $width: ((100-(($col - 1) * $gutter)) / $col) + %;
+
+  margin-bottom: $gutter + %;
+  margin-right: $gutter + %;
+  width: $width;
+  float: left;
+  &:nth-child(#{$col}n) { margin-right: 0; }
+}
