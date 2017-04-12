@@ -38,15 +38,17 @@ module.exports = {
     contentBase: resolve(__dirname, 'public'),
     // match the output path
 
-    publicPath: '/'
+    publicPath: '/',
     // match the output `publicPath`
+
+    historyApiFallback: true
   },
 
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        use: [ 'babel-loader', ],
+        use: [ 'babel-loader'],
         exclude: /node_modules/
       },
       {
@@ -63,7 +65,7 @@ module.exports = {
           },
           { loader: "sass-loader",
             options: {
-              includePaths: ["node_modules/normalize.css"],
+              includePaths: ["node_modules/normalize.css", "node_modules/font-awesome/scss"],
               sourceMap: true
             }
           }
